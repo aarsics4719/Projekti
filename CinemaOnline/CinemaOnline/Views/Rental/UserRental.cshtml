@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Rentum>
+@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-10 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Korisnici)</th>
+                    <th>@Html.DisplayNameFor(model => model.Film)</th>
+                    <th>@Html.DisplayNameFor(model => model.Datum)</th>
+                    <th>@Html.DisplayNameFor(model => model.Film.Cena)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Korisnici.Email)</td>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Film.Ime)</td>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Datum)</td>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Film.Cena)</td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>

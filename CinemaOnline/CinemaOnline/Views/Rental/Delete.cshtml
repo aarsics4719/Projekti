@@ -1,0 +1,29 @@
+﻿@model Rentum
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4 offset-4">
+        <h3 class="text-center">Are you sure you want to delete rental by @Model.Korisnici.Email ?</h3>
+        <form method="post" asp-controller="Rental" asp-action="PotvrdiBrisanje" asp-route-id="@Model.RentaId">
+            <div class="form-group text-center">
+                <label asp-for="Korisnici.Email" class="control-label"></label>
+                <input asp-for="Korisnici.Email" class="form-control" readonly />
+            </div>
+            <div class="form-group text-center">
+                <label asp-for="Film.Ime" class="control-label"></label>
+                <input asp-for="Film.Ime" class="form-control" readonly />
+            </div>
+            <div class="form-group text-center">
+                <label asp-for="Datum" class="control-label"></label>
+                <input asp-for="Datum" class="form-control" readonly />
+            </div>
+            <div class="form-group text-center">
+                <button class="btn btn-danger" type="submit"><i class="bi bi-trash">Delete</i></button>
+            </div>
+        </form>
+    </div>
+</div>

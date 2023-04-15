@@ -1,0 +1,36 @@
+﻿@model Glumci
+@{
+    ViewBag.Title = "Add new actor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4 offset-4">
+        <display class="display-4 text-center">Dodaj novog glumca</display>
+        <form asp-action="DodajGlumca">
+            <div class="form-group">
+                <label asp-for="Ime" class="control-label"></label>
+                <input asp-for="Ime" class="form-control" />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DatumRodjenja" class="control-label"></label>
+                <input asp-for="DatumRodjenja" class="form-control" />
+                <span asp-validation-for="DatumRodjenja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZemljaPorekla" class="control-label"></label>
+                <input asp-for="ZemljaPorekla" class="form-control" />
+                <span asp-validation-for="ZemljaPorekla" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nagrade" class="control-label"></label>
+                <input asp-for="Nagrade" class="form-control" />
+                <span asp-validation-for="Nagrade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="DodajGlumca" class="btn btn-outline-success" />
+            </div>
+        </form>
+    </div>
+</div>

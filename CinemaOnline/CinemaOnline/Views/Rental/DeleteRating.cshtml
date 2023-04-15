@@ -1,0 +1,33 @@
+﻿@model CinemaOnline.Models.Rejting
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4 offset-4">
+        <h3 class="text-center">Are you sure you want to delete rejting by @Model.Email ?</h3>
+        <form method="post" asp-controller="Rental" asp-action="PotvrdiBrisanjeRejtinga" asp-route-id="@Model.RejtingId">
+            <div class="form-group text-center">
+                <label asp-for="FilmId" class="control-label"></label>
+                <input asp-for="FilmId" class="form-control" readonly />
+            </div>
+            <div class="form-group text-center">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" readonly />
+            </div>
+            <div class="form-group text-center">
+                <label asp-for="komentar" class="control-label"></label>
+                <input asp-for="komentar" class="form-control" readonly />
+            </div>
+            <div class="form-group text-center">
+                <label asp-for="rejting" class="control-label"></label>
+                <input asp-for="rejting" class="form-control" readonly />
+            </div>
+            <div class="form-group text-center">
+                <button class="btn btn-danger" type="submit"><i class="bi bi-trash">Delete</i></button>
+            </div>
+        </form>
+    </div>
+</div>

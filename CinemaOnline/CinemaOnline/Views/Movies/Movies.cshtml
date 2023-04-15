@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Filmovi>
+@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="display-4 mb-3 mt-3">Filmovi</div>
+<div class="row">
+    <div class="card-deck">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mt-4 mb-4">
+                <div class="card bg-dark text-light h-100 w-100">
+                    <img class="card-img-top img-fluid" src="@item.Slika" style="height: 30rem;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">@item.Ime</h5>
+                        <p class="card-subtitle text-muted text-center">@item.Godina - @item.Trajanje - iMDB Ocena: @item.Ocena - @item.Zanr<p>
+                        <p class="card-text text-justify">@item.Opis</p>
+                    </div>
+                    <span class="m-3">
+                        @if(ViewBag.User != null)
+                        {
+                            <a class="btn btn-outline-secondary text-white" asp-controller="Rental" asp-action="Checkout" asp-route-id="@item.FilmId">
+                                <i class="bi bi-film"></i> Rentiraj!
+                            </a>
+                        }
+                            <a class="btn btn-outline-secondary text-white" style="float: right;" asp-controller="Rental" asp-action="RentalDetails" asp-route-id="@item.FilmId">
+                                <i class="bi bi-film"></i>Detalji
+                            </a>
+                    </span>
+                </div>
+            </div>
+        }
+    </div>
+</div>

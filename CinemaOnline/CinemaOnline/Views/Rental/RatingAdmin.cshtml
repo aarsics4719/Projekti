@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Rejting>;
+@{
+    ViewBag.Title = "Actors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-10 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.FilmId)</th>
+                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                    <th>@Html.DisplayNameFor(model => model.rejting)</th>
+                    <th>@Html.DisplayNameFor(model => model.komentar)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.FilmId)</td>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.rejting)</td>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.komentar)</td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-danger" asp-controller="Rental" asp-action="ObrisiRejting" asp-route-id="@item.RejtingId"><i class="bi bi-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\CinemaOnline",
+    "\\CinemaOnline\\Controllers",
+    "\\CinemaOnline\\Services",
+    "\\CinemaOnline\\Views",
+    "\\CinemaOnline\\Views\\Actors",
+    "\\CinemaOnline\\Views\\Shared"
+  ],
+  "SelectedNode": "\\CinemaOnline\\Services\\ActorsService.cs",
+  "PreviewInSolutionExplorer": false
+}

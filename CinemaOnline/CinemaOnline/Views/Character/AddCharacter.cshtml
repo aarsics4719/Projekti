@@ -1,0 +1,22 @@
+﻿@model Likovi
+@{
+    ViewBag.Title = "Add new actor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4 offset-4">
+        <display class="display-4 text-center">Add new character</display>
+        <form asp-controller="Character" asp-action="DodajLikove">
+            <div class="form-group">
+                <label asp-for="Ime" class="control-label"></label>
+                <input asp-for="Ime" class="form-control" />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="DodajLikove" class="btn btn-outline-success" />
+            </div>
+        </form>
+    </div>
+</div>

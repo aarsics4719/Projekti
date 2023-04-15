@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Filmovi>
+@{
+    ViewBag.Title = "Actors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-10 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Ime)</th>
+                    <th>@Html.DisplayNameFor(model => model.Zanr)</th>
+                    <th>@Html.DisplayNameFor(model => model.Opis)</th>
+                    <th>@Html.DisplayNameFor(model => model.Ocena)</th>
+                    <th>@Html.DisplayNameFor(model => model.Godina)</th>
+                    <th>@Html.DisplayNameFor(model => model.Cena)</th>
+                    <th>@Html.DisplayNameFor(model => model.Trajanje)</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Ime)</td>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Zanr)</td>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Opis)</td>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Ocena)</td>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Godina)</td>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Cena)</td>
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Trajanje)</td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-danger" asp-controller="Movies" asp-action="ObrisiFilm" asp-route-id="@item.FilmId"><i class="bi bi-trash"></i></a>
+                            <a class="btn btn-outline-info" asp-controller="Movies" asp-action="Edit" asp-route-id="@item.FilmId"><i class="bi bi-pencil"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="text-white">
+        <a class="btn btn-outline-success" asp-controller="Movies" asp-action="DodajFilm">Add new movie</a>
+    </div>
+</div>

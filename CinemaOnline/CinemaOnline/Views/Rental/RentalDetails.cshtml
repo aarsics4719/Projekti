@@ -1,0 +1,100 @@
+﻿@model RejtingViewModel;
+
+@{
+    ViewBag.Title = "Rental details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4 mt-4 mb-4" asp-route-id="@Model.FilmId">
+        <div class="card bg-dark w-90">
+            <img class="img-fluid" src="@Model.Slika" style="height: 30rem;">
+        </div>
+    </div>
+    <div class="col-md-8 mt-4 mb-4">
+        <div class="card bg-dark">
+            <div class="card-body">
+                <h1 class="card-title text-left text-white mb-3">@Model.Ime</h1>
+                <div class="text-white text-left mb-3" style="box-sizing: border-box">
+                    <h6><i class="bi bi-calendar3"></i> Godina: @Model.Godina - <i class="bi bi-clock"></i> Trajanje: @Model.Trajanje - iMDB Ocena: @Model.Ocena - Žanr: @Model.Zanr</h6>
+                </div>
+                <h3 class="text-left mt-5 mb-5" style="color: #bcbcbb">
+                    @Model.Opis
+                </h3>
+                <div class="text-white text-left mb-3" style="box-sizing: border-box">
+                    <h5>
+                        Junaci:
+                        @foreach (var character in ViewBag.Characters)
+                        {
+                            if (ViewBag.CharacterId == character.LikoviId)
+                            {
+                                @character.Ime
+                            }
+                        }
+                    </h5>
+                    <h5>
+                        Glavne uloge:
+                        @foreach (var actor in ViewBag.Actors)
+                        {
+                            if (ViewBag.ActorId == actor.GlumciId)
+                            {
+                                @actor.Ime
+                            }
+                        }
+                    </h5>
+                    <h5>
+                        Cena:
+                        @Model.Cena
+                    </h5>
+                    <div class="text-right w-50" style="float: right">
+                        <a class="btn btn-outline-secondary text-white mt-2" asp-controller="Movies" asp-action="Movies">Nazad na filmove!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bg-dark h-75 mt-3">
+            <div class="card-body">
+                <h1 class="card-title text-left text-white mb-3">Komentari</h1>
+                @if(ViewBag.User != null)
+                {
+                <form method="post" asp-controller="Rental" asp-action="AddRating" asp-route-id="@Model.FilmId">
+                    <input type="hidden" name="FilmId" value="@Model.FilmId" />
+                    <div class="form-outline w-75" style="margin-left:auto; margin-right:auto; text-align:center; border-radius: 25px;">
+                        <textarea asp-for="komentar" class="form-control" rows="4" style="background: #fff;"></textarea>
+                        <label class="form-label text-white">Komentariši</label>
+                    </div>
+                    <div class="form-group w-75" style="margin-left:auto; margin-right:auto; text-align:center;">
+                        <select asp-for="rejting" class="form-control w-50" style="margin-left:auto; margin-right:auto; text-align:center;">
+                            <option value="">Select a rating</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <label class="form-label text-white">Oceni</label>
+                    </div>
+                    <div class="float-end mt-2 pt-1" style="float: right;">
+                        <button type="submit" class="btn btn-outline-secondary text-white">Pošalji!</button>
+                    </div>
+                </form>
+                }
+                    @foreach (var comment in ViewBag.Comments)
+                    {
+                        <div class="col-md-8 mt-3">
+                            <div class="bg-white p-2" style="border-radius: 20px;">
+                                    <div class="d-flex flex-row user-info">
+                                        <i class="bi bi-person-circle" style="font-size: 30px"></i>
+                                        <div class="d-flex flex-column justify-content-start ml-2"><span class="text-black mt-2">@comment.Email</span></div>
+                                    </div>
+                                    <div class="mt-2">
+                                        <p class="comment-text">@comment.komentar</p>
+                                    </div>
+                                </div>
+                            </div>                       
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
